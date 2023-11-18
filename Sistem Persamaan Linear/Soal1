@@ -1,0 +1,45 @@
+def biseksi(f, a, b, tol=1e-6):
+    """
+    Solusi akar persamaan f(x) = 0 dengan menggunakan metode Biseksi.
+
+    Args:
+      f: Fungsi f(x).
+      a: Nilai x awal yang lebih kecil dari akar.
+      b: Nilai x awal yang lebih besar dari akar.
+      tol: Toleransi kesalahan.
+
+    Returns:
+      Nilai akar x.
+    """
+
+    while abs(b - a) > tol:
+        # Hitung x_mid.
+        x_mid = (a + b) / 2
+
+        # Cek tanda f(x_mid).
+        if f(a) * f(x_mid) < 0:
+            b = x_mid
+        else:
+            a = x_mid
+
+    return x_mid
+
+
+def main():
+    # Definisikan fungsi f(x).
+    def f(x):
+        return 3 + x**2 - x
+
+    # Tentukan nilai awal a dan b.
+    a = -1
+    b = 1
+
+    # Hitung akar x.
+    x = biseksi(f, a, b)
+
+    # Cetak hasil.
+    print("Akar:", x)
+
+
+if __name__ == "__main__":
+    main()
